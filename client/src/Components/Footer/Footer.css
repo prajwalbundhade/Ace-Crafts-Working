@@ -1,0 +1,24 @@
+.footer-container {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* faint white border */
+  }
+  
+  .footer-text {
+    color: #ddd;
+  }
+  
+  .footer-bold {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .footer-text p {
+    margin: 5px 0;
+  }
+  
+  .footer-text p br {
+    display: block;
+    margin-top: 5px;
+  }
+  

@@ -1,0 +1,60 @@
+.services-container {
+    background-color: #222;
+  padding: 50px 0;
+  min-height: 100vh;
+}
+
+.services-card {
+  /* background-color: transparent; Set background color to transparent */
+  border: none;
+  padding: 30px;
+}
+
+.services-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.services-text {
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+.service-item {
+  /* background-color: #444; */
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.service-item .card-body {
+  padding: 20px;
+}
+
+.service-item .card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.service-item .card-text {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.contact-info {
+  margin-top: 30px;
+  color: #ccc;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}

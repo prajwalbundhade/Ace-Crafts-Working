@@ -1,0 +1,134 @@
+/* Search bar styling */
+.search {
+  width: 60%; /* Increased width for better appearance */
+  position: relative;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+/* Welcome text */
+.welcome-text {
+  font-size: 60px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffffff;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+}
+
+/* Description text */
+.description-text {
+  font-size: 18px;
+  color: #dbdbdb;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+padding: 0 200px;
+  align-items: center;
+}
+.search input {
+  width: 100%;
+  height: 60px; /* Increased height */
+  border-radius: 30px; /* Smooth rounded edges */
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid #1bc14f; /* Border color matching theme */
+  outline: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search input::placeholder {
+  color: #888;
+}
+
+.search button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  border: none;
+  padding: 0 20px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background: linear-gradient(260deg, rgba(255,255,255,1) 0%, rgb(91, 232, 122) 35%, #1bc14f 100%);
+  color: rgb(0, 0, 0);
+  font-size: 19px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100px; /* Increased width for better appearance */
+}
+
+.search button:hover {
+  background: linear-gradient(90deg, #1bc14f 0%, rgb(91, 232, 185) 50%, rgba(255,255,255,1) 100%);
+}
+.shuffle-btn {
+  padding: 10px 20px;
+  cursor: pointer;
+  /* transition: background 0.3s ease, transform 0.3s ease; */
+}
+.shuffle-btn img{
+  width: 35px;
+  height: 35px;
+}
+
+
+.shuffle-btn:active {
+  /* background: linear-gradient(45deg, #ee0979, #ff6a00); Keep the same gradient on click */
+  transform: scale(0.98); /* Slight shrink effect on click */
+}
+/* Category button styling */
+.btn-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-group .btn {
+  border-radius: 20px !important;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 2px solid #1bc14f;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  color: #1bc14f;
+}
+.btn-group button:hover {
+  background: #1bc14f;
+  color: rgb(0, 0, 0);
+}
+
+.new-btn-primary {
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgb(91, 232, 185) 35%, #1bc14f 100%);
+  color: rgb(0, 0, 0) !important;
+  border: none;
+}
+
+.btn-outline-primary {
+  border: 2px solid #1bc14f;
+  color: #000000;
+  background: white;
+}
+
+.new-btn-primary:hover, .btn-outline-primary:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive design */
+@media screen and (max-width: 800px) {
+  .search {
+    width: 100%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-group button {
+    width: 100%;
+  }
+  .description-text{
+    padding: 0 20px;
+  }
+}

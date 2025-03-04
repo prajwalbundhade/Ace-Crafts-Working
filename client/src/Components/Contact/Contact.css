@@ -1,0 +1,8 @@
+.get-in-touch{
+    background: linear-gradient(90deg, rgb(212, 212, 212) 0%, rgb(91, 232, 117) 35%, #1bc14f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
+.text-info{
+    color: #1bc14f !important;
+}

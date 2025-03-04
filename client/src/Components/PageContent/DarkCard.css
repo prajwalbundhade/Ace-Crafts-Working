@@ -1,0 +1,98 @@
+  .CardImg{
+      /* width: 320px; */
+      border-radius: 15px;
+      /* height: 180px; */
+      padding: 4px;
+  }
+  .cardStyle{
+      /* width: 350px;  */
+      /* height: 100%; */
+      border: 1px solid #3c3c3c !important;
+      margin-top: 25px;
+    
+        margin-bottom: 1rem !important;
+    
+  }
+
+
+  .card-title {
+      font-size: 13px !important; /* Example font size */
+      /* Add more styles as needed */
+    }
+  .desc{
+    font-size: 11px;
+  }
+  .tag {
+    display: inline-block;
+    margin-right: 10px;
+    background-color: rgba(46, 195, 183, 0);  
+    border-radius: 10px;
+    margin-left: 0px;
+    position: relative;
+    color: white;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 10px;
+    line-height: 25px;
+    border: 1px solid #1bc14f;
+    padding: 1px 8px 1px 8px;
+  }
+
+
+    .badge-container {
+      position: absolute;
+      top: 5px; /* Adjust as needed */
+      left: 9px; /* Adjust as needed */
+      z-index: 1; /* Ensure it's above the image */
+    }
+    .price{
+      border-radius: 20px;
+      /* margin-right: 7px; */
+      font-size: 13px !important;
+    }
+
+    .buybutton{
+      width: 88px;
+      cursor: pointer;
+    }
+  .bookbutton{
+    border-radius: 15px !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      
+  }
+  .custom-bg{
+    background-color: #010d00 !important;
+  }
+  .card-body{
+    padding: 10px !important;
+  }
+
+    @media screen and (max-width: 768px){
+      .buybutton{
+        width: 70px;
+      }
+      .tag{
+        font-size: 10px;
+        line-height: 22px;
+        margin-right: 12px;
+      }
+      .card-title {
+        font-size: 11px !important; /* Example font size */
+        /* Add more styles as needed */
+      }
+      .desc{
+        font-size: 10px;
+        margin-bottom: 7px;
+      }
+      .card-body {
+        padding: 6px !important;
+    }
+    .custom-padd{
+      padding: 10px !important;
+    }
+    .cardStyle{
+      margin-top: 1px;
+      margin-bottom: 0px !important;
+    }
+    }
