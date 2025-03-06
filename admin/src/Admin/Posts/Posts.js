@@ -67,7 +67,7 @@ function Posts() {
   
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/posts/new-all-post"); // Updated URL
+      const response = await axios.get("https://teamacecrafts.com/api/posts/new-all-post"); // Updated URL
       setPostsData(response.data);
       setLoading(false);
     } catch (error) {
@@ -77,7 +77,7 @@ function Posts() {
   };
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${postId}`);
+      await axios.delete(`https://teamacecrafts.com/api/posts/${postId}`);
       Swal.fire('Deleted!', 'Your post has been deleted.', 'success');
       fetchPosts();  // Refresh the list of posts after successful deletion
     } catch (error) {
@@ -120,7 +120,7 @@ function Posts() {
 
   // Update the order in the database via API
   try {
-    await axios.post("http://localhost:5000/api/order/update", {
+    await axios.post("https://teamacecrafts.com/api/order/update", {
       draggedPostId: movedPost._id,
       targetPostId: reorderedPosts[destination.index]._id,
       newPosition: destination.index,

@@ -13,7 +13,7 @@ const PageContent = () => {
     const fetchCardsData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/posts/new-all-post"
+          "https://teamacecrafts.com/api/posts/new-all-post"
         ); // Original endpoint
         setCardsData(response.data); // Set card data
         setLoading(false);
