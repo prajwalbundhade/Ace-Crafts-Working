@@ -37,8 +37,10 @@ const About = () => {
 
                   <br /> <br /> Join us on our journey as we redefine modding excellence. Have questions or need a custom modpack? Reach out – we're here to bring your ideas to life and take your gaming adventures to the next level.
 
-                  <br />
-
+                  <br /> <br />
+                  <p>
+                    Support: <a href="mailto:teamacecrafts@gmail.com" className="text-info">teamacecrafts@gmail.com</a><br />
+                    </p>
                 </Card.Text>
                 <div className="about-buttons">
                   <Link to="/contact">
