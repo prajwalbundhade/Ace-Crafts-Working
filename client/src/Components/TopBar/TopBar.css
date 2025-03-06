@@ -138,7 +138,10 @@
   font-size: 1.3rem;
   transition: all 0.3s ease;
 }
-
+.social-icon img{
+  width: 40px;
+  height: 40px;
+}
 .social-icon:hover svg {
   transform: scale(1.2);
 }

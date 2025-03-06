@@ -57,7 +57,7 @@ const DarkCard = ({ data }) => {
           {price && <span className="tag">Price: {price} </span>}
           {buyNow && (
             <a href={buyNow} target="_blank" rel="noopener noreferrer">
-              <img className="buybutton" src={Buy_now_btn} alt="" />
+              <img className="buybutton" src={Buy_now_btn} alt="buybutton" />
             </a>
           )}
 
@@ -75,37 +75,33 @@ const DarkCard = ({ data }) => {
       {/* Modal for Booking */}
       <Modal show={showBookModal} onHide={handleModalClose}>
         <Modal.Header closeButton>
-          <Modal.Title>How to Buy Mod</Modal.Title>
+          <Modal.Title>How to Book Mod</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Follow these steps to book this product:</p>
+          
           <Table bordered>
             <tbody>
               <tr>
                 <td>1)</td>
-                <td>This mod needs customization according to your skin.</td>
+                <td>These mods are under development and can be booked in advance for your region.
+</td>
               </tr>
               <tr>
                 <td>2)</td>
                 <td>
-                  This mod is completed, you have to contact me here:
+                📩 To book, contact me:
                   <ul>
-                    <li>Email - <a href="mailto:contact@craftifyproductions.com">contact@craftifyproductions.com</a></li>
-                    <li>Email - <a href="mailto:techthunderz443@gmail.com">techthunderz443@gmail.com</a></li>
-                    <li>Discord - thunderzlucky</li>
+                    <li>Email - <a href="mailto:contact@teamacecrafts.com">contact@teamacecrafts.com</a></li>
+                    <li>Email - <a href="mailto:teamacecrafts@gmail.com">teamacecrafts@gmail.com</a></li>
+                    <li>💬 Discord – acecrafts</li>
                   </ul>
                 </td>
               </tr>
               <tr>
                 <td>3)</td>
-                <td>Here you have to send me your skin and the players who will be playing the mod.</td>
+                <td>Once the mod is complete, you’ll receive it within 24-48 hours after payment.</td>
               </tr>
-              <tr>
-                <td>4)</td>
-                <td>
-                  I will send an invoice, and once you pay, you will receive the mod in 24-48 Hours.
-                </td>
-              </tr>
+             
             </tbody>
           </Table>
         </Modal.Body>
@@ -119,17 +115,20 @@ const DarkCard = ({ data }) => {
       {/* Modal for New Buy Now */}
       <Modal show={showNewBuyNowModal} onHide={handleModalClose}>
         <Modal.Header closeButton>
-          <Modal.Title>How to Book Mod</Modal.Title>
+          <Modal.Title>How to Book This Mod</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>These mods are <strong>under development</strong> and can be <strong>booked in advance</strong> for your region.</p>
-          <p>📩 To book, contact me:</p>
+          <p> This mod requires customization based on your Minecraft skin.  
+</p>
+          <p> The mod is already completed. To proceed, contact me here:  
+</p>
           <ul>
-            <li>Email – <a href="mailto:contact@craftifyproductions.com">contact@craftifyproductions.com</a></li>
-            <li>Email – <a href="mailto:techthunderz443@gmail.com">techthunderz443@gmail.com</a></li>
-            <li>💬 Discord – thunderzlucky</li>
+            <li> <b>Email </b> – <a href="mailto:contact@teamacecrafts.com">contact@teamacecrafts.com</a></li>
+            <li> <b>Email</b> – <a href="mailto:teamacecrafts@gmail.com">teamacecrafts@gmail.com</a></li>
+            <li>💬 Discord – thunderzlucky </li>
           </ul>
-          <p>Once the mod is complete, you’ll receive it within <strong>24-48 hours</strong> after payment.</p>
+          <p>Send me your skin along with the list of players who will be using the mod.</p>
+          <p> I will provide an invoice. Once payment is completed, you will receive the mod within <b>24-48 hours.</b></p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleModalClose}>

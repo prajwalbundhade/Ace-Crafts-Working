@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import pop_up_btn from '../../../src/images/pop_up_btn.png';
+import yt_jobs from '../../images/yt_jobs.png';
 import discord from '../../images/discord.png';
 import twitter from '../../images/twitter.png';
 import gmail from '../../images/gmail.png';
@@ -12,6 +13,7 @@ import RedButtonModal from '../PopupModal/RedButtonModal';
 import { FaDiscord } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { IoMdMail } from "react-icons/io";
+
 const TopBar = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [show, setShow] = useState(false);
@@ -22,13 +24,26 @@ const TopBar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const copyDiscordID = () => {
-    const discordID = 'thunderzlucky';
+    const discordID = 'acecrafts';
     navigator.clipboard.writeText(discordID).then(() => {
       alert('Discord ID copied to clipboard!');
     }, (err) => {
       console.error('Could not copy text: ', err);
     });
   };
+
+  const openTwitter = () => {
+    window.open('https://x.com/teamacecrafts', '_blank');
+  };
+
+  const openMail = () => {
+    window.location.href = 'mailto:contact@teamacecrafts.com';
+  };
+
+  const openYtjobs = () => {
+    window.open('https://ytjobs.co/@acecrafts', '_blank');
+  };
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -40,6 +55,7 @@ const TopBar = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <div className="topbar-container">
       {/* Logo section (left) */}
@@ -70,40 +86,45 @@ const TopBar = () => {
               <Link className="nav-link" to="/contact" onClick={() => setMenuOpen(false)}>Contact us</Link>
             </li>
             <li className="nav-item">
-            <a href="#" className="nav-link red-button" onClick={handleShow}>
-            <img src={pop_up_btn} alt="Red Button" />
-          </a>
+              <a href="#" className="nav-link red-button" onClick={handleShow}>
+                <img src={pop_up_btn} alt="Red Button" />
+              </a>
             </li>
           </ul>
           {isMobile && (
-  <div className={`social-icons ${menuOpen ? 'mobile-show' : ''}`}>
-    <div className="social-icon" onClick={copyDiscordID}>
-      <FaDiscord />
-    </div>
-    <div className="social-icon">
-      <BsTwitterX />
-    </div>
-    <div className="social-icon">
-      <IoMdMail />
-    </div>
-  </div>
-)}
+            <div className={`social-icons ${menuOpen ? 'mobile-show' : ''}`}>
+              <div className="social-icon" onClick={copyDiscordID}>
+                <FaDiscord />
+              </div>
+              <div className="social-icon" onClick={openTwitter}>
+                <BsTwitterX />
+              </div>
+              <div className="social-icon" onClick={openMail}>
+                <IoMdMail />
+              </div>
+              <div className="social-icon" onClick={openYtjobs}>
+                <img src={yt_jobs} alt="btn" />
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
       {/* Game logos and social icons (right) */}
       <div className="topbar-right">
-
         {/* Social icons for mobile will be part of the dropdown menu */}
         <div className={`hide-on-mobile social-icons ${menuOpen ? 'mobile-show' : ''}`}>
           <div className="social-icon" onClick={copyDiscordID}>
             <FaDiscord />
           </div>
-          <div className="social-icon">
+          <div className="social-icon" onClick={openTwitter}>
             <BsTwitterX />
           </div>
-          <div className="social-icon">
+          <div className="social-icon" onClick={openMail}>
             <IoMdMail />
+          </div>
+          <div className="social-icon" onClick={openYtjobs}>
+            <img src={yt_jobs} alt="btn" />
           </div>
         </div>
       </div>
