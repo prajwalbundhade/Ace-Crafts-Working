@@ -125,7 +125,7 @@ const DarkCard = ({ data }) => {
           <ul>
             <li> <b>Email </b> – <a href="mailto:contact@teamacecrafts.com">contact@teamacecrafts.com</a></li>
             <li> <b>Email</b> – <a href="mailto:teamacecrafts@gmail.com">teamacecrafts@gmail.com</a></li>
-            <li>💬 Discord – thunderzlucky </li>
+            <li>💬 Discord – acecrafts </li>
           </ul>
           <p>Send me your skin along with the list of players who will be using the mod.</p>
           <p> I will provide an invoice. Once payment is completed, you will receive the mod within <b>24-48 hours.</b></p>

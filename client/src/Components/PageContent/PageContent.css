@@ -113,6 +113,9 @@ padding: 0 200px;
 .new-btn-primary:hover, .btn-outline-primary:hover {
   transform: scale(1.05);
 }
+.order_custom_btn{
+  width: 350px;
+}
 
 /* Responsive design */
 @media screen and (max-width: 800px) {
@@ -130,5 +133,9 @@ padding: 0 200px;
   }
   .description-text{
     padding: 0 20px;
+  }
+  .order_custom_btn{
+    width: 280px;
+    cursor: pointer;
   }
 }
