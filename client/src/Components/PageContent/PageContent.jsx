@@ -65,7 +65,7 @@ const PageContent = () => {
   return (
     <div className="container mt-5">
       <div className="d-flex justify-content-center align-items-center flex-column mb-3">
-      <Link to="/contact" className="craftify_lable-wrapper">
+      <Link to="https://craftifyproductions.com/" className="craftify_lable-wrapper">
           <img
             className="craftify_lable"
             src={craftify_lable}
