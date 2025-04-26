@@ -23,7 +23,7 @@
   margin-bottom: 20px;
   text-align: center;
   font-weight: 600;
-padding: 0 200px;
+  padding: 0 200px;
   align-items: center;
 }
 .search input {
@@ -50,7 +50,12 @@ padding: 0 200px;
   padding: 0 20px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
-  background: linear-gradient(260deg, rgba(255,255,255,1) 0%, rgb(91, 232, 122) 35%, #1bc14f 100%);
+  background: linear-gradient(
+    260deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgb(91, 232, 122) 35%,
+    #1bc14f 100%
+  );
   color: rgb(0, 0, 0);
   font-size: 19px;
   font-weight: 600;
@@ -60,18 +65,22 @@ padding: 0 200px;
 }
 
 .search button:hover {
-  background: linear-gradient(90deg, #1bc14f 0%, rgb(91, 232, 185) 50%, rgba(255,255,255,1) 100%);
+  background: linear-gradient(
+    90deg,
+    #1bc14f 0%,
+    rgb(91, 232, 185) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }
 .shuffle-btn {
   padding: 10px 20px;
   cursor: pointer;
   /* transition: background 0.3s ease, transform 0.3s ease; */
 }
-.shuffle-btn img{
+.shuffle-btn img {
   width: 35px;
   height: 35px;
 }
-
 
 .shuffle-btn:active {
   /* background: linear-gradient(45deg, #ee0979, #ff6a00); Keep the same gradient on click */
@@ -99,7 +108,12 @@ padding: 0 200px;
 }
 
 .new-btn-primary {
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgb(91, 232, 185) 35%, #1bc14f 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgb(91, 232, 185) 35%,
+    #1bc14f 100%
+  );
   color: rgb(0, 0, 0) !important;
   border: none;
 }
@@ -110,10 +124,11 @@ padding: 0 200px;
   background: white;
 }
 
-.new-btn-primary:hover, .btn-outline-primary:hover {
+.new-btn-primary:hover,
+.btn-outline-primary:hover {
   transform: scale(1.05);
 }
-.order_custom_btn{
+.order_custom_btn {
   width: 350px;
 }
 
@@ -131,10 +146,10 @@ padding: 0 200px;
   .btn-group button {
     width: 100%;
   }
-  .description-text{
+  .description-text {
     padding: 0 20px;
   }
-  .order_custom_btn{
+  .order_custom_btn {
     width: 280px;
     cursor: pointer;
   }
@@ -153,7 +168,7 @@ padding: 0 200px;
     justify-content: center;
   }
 }
-.craftify_lable{
-    width: 150px;
-    height: 150px;
+.craftify_lable {
+  width: 150px;
+  height: 150px;
 }
