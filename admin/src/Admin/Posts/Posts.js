@@ -1,12 +1,12 @@
 import AdminLayout from "../../layouts/AdminLayout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faSearch, faTrash, faPen, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../../layouts/Loading";
 import Swal from "sweetalert2";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import DraggablePost from './DraggablePost'; // Import the new memoized component
 
 function PostsData({ postsData, currentPage, itemsPerPage, handleDelete, handleEdit, onDragEnd }) {
@@ -59,7 +59,7 @@ function Posts() {
   const [postsData, setPostsData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn] = useState(true);
 
   useEffect(() => {
     fetchPosts();

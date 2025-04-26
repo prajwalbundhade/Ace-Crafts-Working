@@ -139,3 +139,21 @@ padding: 0 200px;
     cursor: pointer;
   }
 }
+
+.craftify_lable-wrapper {
+  position: absolute;
+  right: 8rem;
+  top: 9rem;
+}
+@media (max-width: 768px) {
+  .craftify_lable-wrapper {
+    position: static; /* Normal flow for mobile */
+    margin: 0 auto; /* Optional, depends on mobile design */
+    display: flex;
+    justify-content: center;
+  }
+}
+.craftify_lable{
+    width: 150px;
+    height: 150px;
+}
