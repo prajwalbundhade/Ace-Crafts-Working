@@ -1,21 +1,21 @@
 .CardImg {
-  /* width: 320px; */
   border-radius: 15px;
-  /* height: 180px; */
   padding: 4px;
 }
 .cardStyle {
-  /* width: 350px;  */
-  /* height: 100%; */
   border: 1px solid #3c3c3c !important;
   margin-top: 25px;
-
   margin-bottom: 1rem !important;
+  transition: transform 0.3s ease-in-out !important;
+  transform-origin: center center;
 }
-
+@media (min-width: 992px) {
+.cardStyle:hover {
+  transform: scale(1.03);
+}
+}
 .card-title {
-  font-size: 13px !important; /* Example font size */
-  /* Add more styles as needed */
+  font-size: 13px !important;
 }
 .desc {
   font-size: 11px;
@@ -64,6 +64,78 @@
   padding: 10px !important;
 }
 
+/* Container to control hover behavior */
+.image-carousel-container {
+  position: relative !important;
+}
+
+/* By default, hide the prev/next controls (on desktop) */
+.image-carousel-container .carousel-control-prev,
+.image-carousel-container .carousel-control-next {
+  display: none !important;
+}
+
+/* Always show the prev/next controls on mobile devices */
+@media (max-width: 991px) {
+  .image-carousel-container .carousel-control-prev,
+  .image-carousel-container .carousel-control-next {
+    display: flex !important;
+  }
+  .video-label{
+    opacity: 1 !important;
+  }
+}
+
+/* Show the prev/next controls only on hover (desktop >= 992px) */
+@media (min-width: 992px) {
+  .image-carousel-container:hover .carousel-control-prev,
+  .image-carousel-container:hover .carousel-control-next {
+    display: flex !important;
+  }
+}
+
+/* Style for custom icons */
+.custom-carousel-icon {
+  width: 32px; /* Adjust size as needed */
+  height: 32px;
+  object-fit: contain;
+  filter: none !important; /* No hover effect */
+}
+
+.image-carousel-container {
+  position: relative;
+}
+
+.video-label {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: 500;
+  border-radius: 2px 8px 2px 8px;
+  opacity:  0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (hover: hover) and (min-width: 992px) {
+  .image-container:hover .video-label {
+    opacity: 1;
+  }
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
 @media screen and (max-width: 768px) {
   .buybutton {
     width: 70px;
@@ -74,8 +146,7 @@
     margin-right: 12px;
   }
   .card-title {
-    font-size: 11px !important; /* Example font size */
-    /* Add more styles as needed */
+    font-size: 11px !important;
   }
   .desc {
     font-size: 10px;
@@ -90,5 +161,12 @@
   .cardStyle {
     margin-top: 1px;
     margin-bottom: 0px !important;
+  }
+}
+
+/* Optional: Add a subtle zoom effect on hover */
+@media (min-width: 992px) {
+  .image-container:hover .CardImg {
+    transform: scale(1.02);
   }
 }

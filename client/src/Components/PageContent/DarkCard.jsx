@@ -113,9 +113,7 @@ const DarkCard = ({ data }) => {
           </div>
         ) : null}
       </div>
-
       <div className="badge-container">{getStateBadge(state)}</div>
-
       <Card.Body>
         <Card.Title className="card-title">{title}</Card.Title>
         <Card.Text className="desc">{description}</Card.Text>
@@ -144,7 +142,6 @@ const DarkCard = ({ data }) => {
           )}
       </Card.Body>
     </Card>
-{/* new card ends here */}
 
       {/* Modal for Booking */}
       <Modal show={showBookModal} onHide={handleModalClose}>

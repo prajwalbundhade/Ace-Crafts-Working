@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import DarkCard from "./DarkCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import craftify_lable from '../../images/craftify_lable.png';
 import "./PageContent.css";
 // import order_custom_btn from "../../images/order_custom_btn.png";
 const PageContent = () => {
@@ -64,8 +65,20 @@ const PageContent = () => {
   return (
     <div className="container mt-5">
       <div className="d-flex justify-content-center align-items-center flex-column mb-3">
-       <Link to="/contact">
-      <img className="order_custom_btn" src="https://raw.githubusercontent.com/prajwalbundhade/Ace-Crafts-Working/refs/heads/main/client/src/images/order_custom_btn.png" alt="" /></Link>
+      <Link to="/contact" className="craftify_lable-wrapper">
+          <img
+            className="craftify_lable"
+            src={craftify_lable}
+            alt=""
+          />
+        </Link>
+        <Link to="/contact">
+          <img
+            className="order_custom_btn"
+            src="https://raw.githubusercontent.com/prajwalbundhade/Ace-Crafts-Working/refs/heads/main/client/src/images/order_custom_btn.png"
+            alt=""
+          />
+        </Link>
         <div className="col search search-and-shuffle">
           <input
             type="text"
@@ -74,7 +87,7 @@ const PageContent = () => {
             value={searchTerm}
             onChange={handleSearchChange}
           />
-        
+
           <button onClick={shuffleCards} className="btn shuffle-btn">
             <img
               src="https://cdn3d.iconscout.com/3d/premium/thumb/shuffle-3d-icon-download-in-png-blend-fbx-gltf-file-formats--game-play-dice-music-arrow-button-pack-user-interface-icons-9147825.png?f=webp"
