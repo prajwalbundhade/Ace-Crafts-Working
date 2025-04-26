@@ -19,19 +19,26 @@ const PostSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-    imagePath: {
-      type: String,
-      default: "",
+    mediaContent: {
+      type: [{
+        imageUrl: String,
+        ytLink: String,
+        isRealVideo: {
+          type: Boolean,
+          default: false
+        },
+        isRefVideo: {
+          type: Boolean,
+          default: false
+        }
+      }],
+      default: []
     },
     description: {
       type: String,
       default: "",
     },
     buyNow: {
-      type: String,
-      default: "",
-    },
-    ytLink: {
       type: String,
       default: "",
     },
