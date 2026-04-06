@@ -159,6 +159,7 @@
   position: absolute;
   right: 8rem;
   top: 7.1rem;
+  display: none;
 }
 @media (max-width: 768px) {
   .craftify_lable-wrapper {
@@ -166,6 +167,7 @@
     margin: 0 auto; /* Optional, depends on mobile design */
     display: flex;
     justify-content: center;
+    display: none;
   }
 }
 .craftify_lable {
