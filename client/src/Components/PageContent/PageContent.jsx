@@ -4,9 +4,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import craftify_lable from '../../images/craftify_lable.png';
 import "./PageContent.css";
-// import order_custom_btn from "../../images/order_custom_btn.png";
+
 const PageContent = () => {
-  const [cardsData, setCardsData] = useState([]); // Manage dynamic card data
+  const [cardsData, setCardsData] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
@@ -16,8 +16,8 @@ const PageContent = () => {
       try {
         const response = await axios.get(
           "https://teamacecrafts.com/api/posts/new-all-post"
-        ); // Original endpoint
-        setCardsData(response.data); // Set card data
+        );
+        setCardsData(response.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching card data:", error);
@@ -26,7 +26,7 @@ const PageContent = () => {
     };
 
     fetchCardsData();
-  }, []); // Fetch only on mount
+  }, []);
 
   const categories = [...new Set(cardsData.map((card) => card.category))];
 
@@ -38,14 +38,13 @@ const PageContent = () => {
     setSearchTerm(event.target.value);
   };
 
-  // Shuffle function to shuffle the cards array
   const shuffleCards = () => {
     const shuffled = [...cardsData];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    setCardsData(shuffled); // Update state with shuffled cards
+    setCardsData(shuffled);
   };
 
   const filteredCards = cardsData.filter((card) => {
@@ -59,7 +58,7 @@ const PageContent = () => {
   });
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading state
+    return <div>Loading...</div>;
   }
 
   return (
