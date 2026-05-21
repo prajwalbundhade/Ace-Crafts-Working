@@ -111,10 +111,10 @@ const PageContent = () => {
           ))}
         </div>
       </div>
-      <div className="row mt-5">
+      <div className="row mt-5 product-grid">
         {filteredCards.map((card, index) => (
           <div
-            className="custom-padd col-6 col-md-4 col-lg-2" // 2 per row on mobile, 3 per row on tablets, 5 per row on desktop
+            className="custom-padd product-card-col col-6 col-md-3"
             key={index}
           >
             <DarkCard data={card} />

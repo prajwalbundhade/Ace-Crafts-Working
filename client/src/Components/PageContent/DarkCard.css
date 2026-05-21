@@ -1,56 +1,91 @@
 .CardImg {
-  border-radius: 15px;
-  padding: 4px;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  border-radius: 18px;
+  padding: 0;
+  transition: transform 0.28s ease, filter 0.28s ease;
 }
 .cardStyle {
-  border: 1px solid #3c3c3c !important;
-  margin-top: 25px;
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 24px !important;
+  margin-top: 0;
   margin-bottom: 1rem !important;
-  transition: transform 0.3s ease-in-out !important;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
   transform-origin: center center;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(18px);
 }
 @media (min-width: 992px) {
 .cardStyle:hover {
-  transform: scale(1.03);
+  transform: translateY(-8px);
+  border-color: rgba(27, 193, 79, 0.38) !important;
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.42), 0 0 34px rgba(27, 193, 79, 0.12);
 }
 }
 .card-title {
-  font-size: 13px !important;
+  color: #f6fff8 !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1.25;
+  min-height: 38px;
+  margin-bottom: 8px !important;
 }
 .desc {
-  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  line-height: 1.45;
+  min-height: 52px;
 }
 .tag {
   display: inline-block;
-  margin-right: 10px;
-  background-color: rgba(46, 195, 183, 0);
-  border-radius: 10px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  background: rgba(27, 193, 79, 0.12);
+  border-radius: 999px;
   margin-left: 0px;
   position: relative;
-  color: white;
-  font-weight: 600;
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 10px;
-  line-height: 25px;
-  border: 1px solid #1bc14f;
-  padding: 1px 8px 1px 8px;
+  color: #caffd8;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 24px;
+  border: 1px solid rgba(27, 193, 79, 0.42);
+  padding: 1px 10px;
 }
 
 .badge-container {
   position: absolute;
-  top: 5px; /* Adjust as needed */
-  left: 9px; /* Adjust as needed */
-  z-index: 1; /* Ensure it's above the image */
+  top: 12px;
+  left: 12px;
+  z-index: 3;
+}
+
+.badge-container .badge {
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 10px;
+  letter-spacing: 0;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
 }
 .price {
   border-radius: 20px;
-  /* margin-right: 7px; */
   font-size: 13px !important;
 }
 
 .buybutton {
-  width: 85px;
+  width: 96px;
   cursor: pointer;
+  border-radius: 999px;
+  filter: drop-shadow(0 10px 20px rgba(27, 193, 79, 0.16));
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.buybutton:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: drop-shadow(0 14px 28px rgba(27, 193, 79, 0.26));
 }
 .bookbutton {
   border-radius: 15px !important;
@@ -58,24 +93,24 @@
   font-weight: 600 !important;
 }
 .custom-bg {
-  background-color: #010d00 !important;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.045) 100%),
+    rgba(4, 14, 7, 0.72) !important;
 }
 .card-body {
-  padding: 10px !important;
+  padding: 14px !important;
 }
 
-/* Container to control hover behavior */
 .image-carousel-container {
   position: relative !important;
+  padding: 10px 10px 0;
 }
 
-/* By default, hide the prev/next controls (on desktop) */
 .image-carousel-container .carousel-control-prev,
 .image-carousel-container .carousel-control-next {
   display: none !important;
 }
 
-/* Always show the prev/next controls on mobile devices */
 @media (max-width: 991px) {
   .image-carousel-container .carousel-control-prev,
   .image-carousel-container .carousel-control-next {
@@ -86,7 +121,6 @@
   }
 }
 
-/* Show the prev/next controls only on hover (desktop >= 992px) */
 @media (min-width: 992px) {
   .image-carousel-container:hover .carousel-control-prev,
   .image-carousel-container:hover .carousel-control-next {
@@ -94,12 +128,11 @@
   }
 }
 
-/* Style for custom icons */
 .custom-carousel-icon {
-  width: 32px; /* Adjust size as needed */
+  width: 32px;
   height: 32px;
   object-fit: contain;
-  filter: none !important; /* No hover effect */
+  filter: none !important;
 }
 
 .image-carousel-container {
@@ -110,17 +143,17 @@
   position: absolute;
   top: 5px;
   right: 5px;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(3, 10, 6, 0.82);
   color: white;
   padding: 5px 9px;
   font-size: 11px;
   font-weight: 500;
-  border-radius: 2px 8px 2px 8px;
+  border-radius: 999px;
   opacity:  0;
   transition: opacity 0.3s ease;
   z-index: 2;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -138,7 +171,7 @@
 
 @media screen and (max-width: 768px) {
   .buybutton {
-    width: 70px;
+    width: 78px;
   }
   .tag {
     font-size: 10px;
@@ -146,14 +179,16 @@
     margin-right: 12px;
   }
   .card-title {
-    font-size: 11px !important;
+    font-size: 12px !important;
+    min-height: 32px;
   }
   .desc {
-    font-size: 10px;
+    font-size: 10.5px;
     margin-bottom: 7px;
+    min-height: 46px;
   }
   .card-body {
-    padding: 6px !important;
+    padding: 10px !important;
   }
   .custom-padd {
     padding: 10px !important;
@@ -164,9 +199,9 @@
   }
 }
 
-/* Optional: Add a subtle zoom effect on hover */
 @media (min-width: 992px) {
   .image-container:hover .CardImg {
-    transform: scale(1.02);
+    transform: scale(1.045);
+    filter: saturate(1.05) contrast(1.04);
   }
 }

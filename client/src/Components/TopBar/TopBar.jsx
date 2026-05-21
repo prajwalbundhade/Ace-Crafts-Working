@@ -85,13 +85,13 @@ const TopBar = () => {
           </ul>
           {isMobile && (
             <div className={`social-icons ${menuOpen ? 'mobile-show' : ''}`}>
-              <div className="social-icon" onClick={copyDiscordID}>
+              <div className="social-icon social-icon-discord" onClick={copyDiscordID}>
                 <FaDiscord />
               </div>
-              <div className="social-icon" onClick={openTwitter}>
+              <div className="social-icon social-icon-twitter" onClick={openTwitter}>
                 <BsTwitterX />
               </div>
-              <div className="social-icon" onClick={openMail}>
+              <div className="social-icon social-icon-mail" onClick={openMail}>
                 <IoMdMail />
               </div>
               <div className="social-icon" onClick={openYtjobs}>
@@ -104,13 +104,13 @@ const TopBar = () => {
 
       <div className="topbar-right">
         <div className={`hide-on-mobile social-icons ${menuOpen ? 'mobile-show' : ''}`}>
-          <div className="social-icon" onClick={copyDiscordID}>
+          <div className="social-icon social-icon-discord" onClick={copyDiscordID}>
             <FaDiscord />
           </div>
-          <div className="social-icon" onClick={openTwitter}>
+          <div className="social-icon social-icon-twitter" onClick={openTwitter}>
             <BsTwitterX />
           </div>
-          <div className="social-icon" onClick={openMail}>
+          <div className="social-icon social-icon-mail" onClick={openMail}>
             <IoMdMail />
           </div>
           <div className="social-icon" onClick={openYtjobs}>
