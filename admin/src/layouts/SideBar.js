@@ -1,36 +1,45 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faFileAlt, faFolder, faInbox, faUser, faCog, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import { Link, useLocation } from "react-router-dom";
+import { faChartSimple, faFileAlt, faPlus, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function SideBar() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const links = [
-    { to: "/Admin/Posts", icon: faHome, label: "Dashboard" },
+    { to: "/Admin/Dashboard", icon: faChartSimple, label: "Dashboard" },
     { to: "/Admin/Posts", icon: faFileAlt, label: "Mods" },
-    { to: "/Admin/Posts", icon: faFolder, label: "Categories" },
-    { to: "/Admin/Posts", icon: faInbox, label: "State" },
-    { to: "/Admin/Posts", icon: faUser, label: "Accounts" },
-    { to: "/Admin/Posts", icon: faCog, label: "Settings" },
-    { to: "/Admin/Posts", icon: faSignOutAlt, label: "Logout" },
+    { to: "/Admin/Post/New", icon: faPlus, label: "Add Mod" },
   ];
 
+  const handleLogout = () => {
+    sessionStorage.removeItem("authToken");
+    sessionStorage.removeItem("AdminName");
+    navigate("/Login");
+  };
+
   return (
-    <nav className="border-r bg-white h-screen p-4 w-64 pt-10">
+    <nav className="admin-sidebar-nav">
+      <div className="admin-sidebar-kicker">Control Panel</div>
       {links.map((link) => (
-        <Link key={link.to} to={link.to} aria-label={link.label}>
-          <div
-            className={`flex items-center text-black-300 hover:text-blue-500 cursor-pointer rounded-md p-2 mb-2 ${
-              location.pathname === link.to ||
-              (location.pathname === "/Admin" && link.to === "/Admin/Dashboard") ? "bg-gray-200" : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={link.icon} className="mr-3 text-indigo-500" />
-            <span>{link.label}</span>
-          </div>
+        <Link
+          key={link.to}
+          to={link.to}
+          aria-label={link.label}
+          className={`admin-sidebar-link ${
+            location.pathname === link.to ||
+            (location.pathname === "/Admin" && link.to === "/Admin/Dashboard") ? "active" : ""
+          }`}
+        >
+          <FontAwesomeIcon icon={link.icon} />
+          <span>{link.label}</span>
         </Link>
       ))}
+      <button type="button" className="admin-sidebar-link admin-logout" onClick={handleLogout}>
+        <FontAwesomeIcon icon={faSignOutAlt} />
+        <span>Logout</span>
+      </button>
     </nav>
   );
 }

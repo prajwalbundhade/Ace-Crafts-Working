@@ -4,15 +4,17 @@ import { AdminName } from "../Api/Api";
 
 function Nav(){
 return(
-    <nav className="border bg-white p-4 flex justify-between items-center">
-        <Link to="/Admin/Posts">
-            <div className="" style={{fontSize: '24px', fontWeight: 'bold', color: '#6366f1'}}>Ace Crafts Admin</div>
+    <nav className="admin-topbar">
+        <Link to="/Admin/Posts" className="admin-brand">
+            <span className="admin-brand-mark">AC</span>
+            <span>Ace Crafts Admin</span>
         </Link>
-        <div className="flex items-center space-x-4">
-            <div className="flex ">
-                <p type="text" placeholder="Admin name" className="bg-white p-2 rounded" ><AdminName/></p>
-                <img src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg" className="w-10 h-10 rounded" alt="" />
+        <div className="admin-user">
+            <div>
+                <span className="admin-user-label">Signed in</span>
+                <p><AdminName/></p>
             </div>
+            <img src="https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg" alt="" />
         </div>
     </nav>
 

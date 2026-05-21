@@ -1,6 +1,6 @@
 import AdminLayout from "../../layouts/AdminLayout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faCubes, faPlus, faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
@@ -15,38 +15,36 @@ function PostsData({ postsData, currentPage, itemsPerPage, handleDelete, handleE
   const postsToDisplay = postsData.slice(startIndex, endIndex);
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Posts</h1>
-      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-        <DragDropContext onDragEnd={onDragEnd}>  {/* Pass onDragEnd here */}
+    <div className="admin-table-card">
+      <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="posts" direction="vertical">
             {(provided) => (
-              <table className="min-w-full bg-white" ref={provided.innerRef} {...provided.droppableProps}>
-                <thead className="bg-gray-800 text-white">
+              <table className="admin-table" ref={provided.innerRef} {...provided.droppableProps}>
+                <thead>
                   <tr>
-                    <th className="w-1/5 py-2">Order</th>
-                    <th className="w-1/5 py-2">Picture</th>
-                    <th className="w-1/5 py-2">Title</th>
-                    <th className="w-1/5 py-2">Category</th>
-                    <th className="w-1/5 py-2">Actions</th>
+                    <th>Order</th>
+                    <th>Picture</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {postsToDisplay.map((post, index) => (
                     <DraggablePost
-                      key={post._id}          // Ensure each post has a unique key
-                      post={post}             // Pass the post as a prop
-                      index={index}           // Pass index as a prop
+                      key={post._id}
+                      post={post}
+                      index={index}
                       handleDelete={handleDelete}
                       handleEdit={handleEdit}
                     />
                   ))}
+                  {provided.placeholder}
                 </tbody>
               </table>
             )}
           </Droppable>
         </DragDropContext>
-      </div>
     </div>
   );
 }
@@ -134,32 +132,42 @@ function Posts() {
 };
 
   const PostsContent = (
-    <div className="p-4">
+    <section className="admin-page">
       {loading ? (
         <Loading />
       ) : (
         <>
-          <div className="flex justify-between mb-4">
+          <div className="admin-page-header">
+            <div>
+              <span className="admin-eyebrow">Catalog</span>
+              <h1>Mods</h1>
+              <p>Reorder listings, update product details, and keep the client storefront sharp.</p>
+            </div>
+            <div className="admin-stat-pill">
+              <FontAwesomeIcon icon={faCubes} />
+              <span>{filteredPosts.length} Mods</span>
+            </div>
+          </div>
+          <div className="admin-toolbar">
             <Link
               to="/Admin/Post/New"
-              className="bg-indigo-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-indigo-600"
+              className="admin-btn admin-btn-primary"
             >
-              <FontAwesomeIcon icon={faPlus} /> New Post
+              <FontAwesomeIcon icon={faPlus} /> New Mod
             </Link>
-            <div className="flex items-center bg-white border rounded-lg shadow-md px-4 py-2">
-              <FontAwesomeIcon icon={faSearch} className="text-indigo-500 mr-2" />
+            <div className="admin-search">
+              <FontAwesomeIcon icon={faSearch} />
               <input
                 type="text"
-                placeholder="Search"
+                placeholder="Search mods"
                 value={searchQuery}
                 onChange={handleSearchChange}
-                className="outline-none bg-transparent"
               />
               {searchQuery && (
                 <FontAwesomeIcon
                   icon={faTimes}
                   onClick={() => setSearchQuery("")}
-                  className="text-gray-400 ml-2 cursor-pointer"
+                  className="admin-clear-search"
                 />
               )}
             </div>
@@ -172,11 +180,11 @@ function Posts() {
           handleEdit={handleEdit}
           onDragEnd={onDragEnd}
           />
-          <div className="flex justify-center mt-4">
+          <div className="admin-pagination">
             {totalPages > 1 && currentPage > 1 && (
               <button
                 onClick={() => setCurrentPage(currentPage - 1)}
-                className="mr-2 bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400"
+                className="admin-btn admin-btn-muted"
               >
                 Previous
               </button>
@@ -187,7 +195,7 @@ function Posts() {
             {totalPages > 1 && currentPage < totalPages && (
               <button
                 onClick={() => setCurrentPage(currentPage + 1)}
-                className="ml-2 bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400"
+                className="admin-btn admin-btn-muted"
               >
                 Next
               </button>
@@ -195,7 +203,7 @@ function Posts() {
           </div>
         </>
       )}
-    </div>
+    </section>
   );
 
   return <AdminLayout Content={PostsContent} />;

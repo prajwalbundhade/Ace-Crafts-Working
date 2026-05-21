@@ -147,12 +147,9 @@ const NewEditPost = () => {
   };
 
   return (
-    <div
-      style={{ width: '900px' }}
-      className="shadow-md flex-row px-1 mt-5 items-center pt-2 pb-2 mb-2 justify-center rounded-lg ml-10 bg-white"
-    >
-      <h2 className="text-2xl font-semibold mb-4 text-center hover:text-indigo-500">Edit Post</h2>
-      <form onSubmit={handleSubmit} className="space-y-4 w-full p-1">
+    <div className="admin-form-shell">
+      <h2>Edit Post</h2>
+      <form onSubmit={handleSubmit} className="admin-form">
         <div className="flex flex-col">
           <label htmlFor="title" className="text-lg">Title</label>
           <input
@@ -211,13 +208,13 @@ const NewEditPost = () => {
           {formData.mediaContent.length > 0 && (
             <div className="mt-2 space-y-4">
               {formData.mediaContent.map((media, index) => (
-                <div key={index} className="p-4 border rounded-lg bg-gray-50">
-                  <div className="flex justify-between items-start mb-2">
+                <div key={index} className="admin-media-item">
+                  <div className="admin-media-header">
                     <span className="font-medium">Media Item #{index + 1}</span>
                     <button
                       type="button"
                       onClick={() => removeMedia(index)}
-                      className="bg-red-500 text-white px-3 py-1 rounded-lg"
+                      className="admin-btn admin-btn-danger"
                     >
                       Remove
                     </button>
@@ -233,7 +230,7 @@ const NewEditPost = () => {
           )}
 
           {/* Add new media form */}
-          <div className="mt-4 p-4 border rounded-lg bg-gray-50">
+          <div className="admin-media-item">
             <h3 className="font-medium mb-3">Add New Media</h3>
             <div className="space-y-3">
               <div>
@@ -283,7 +280,7 @@ const NewEditPost = () => {
               <button
                 type="button"
                 onClick={handleAddMedia}
-                className="bg-blue-500 text-white px-4 py-2 rounded-lg w-full"
+                className="admin-btn admin-btn-muted w-full"
               >
                 Add Media Item
               </button>
@@ -351,17 +348,17 @@ const NewEditPost = () => {
         </div>
 
         {/* Submit and Clear buttons */}
-        <div className="flex space-x-4">
+        <div className="admin-form-actions">
           <button
             type="submit"
-            className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300"
+            className="admin-btn admin-btn-primary"
           >
             Update Post
           </button>
           <button
             type="button"
             onClick={handleClear}
-            className="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-600 transition duration-300"
+            className="admin-btn admin-btn-muted"
           >
             Clear
           </button>
