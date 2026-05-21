@@ -54,8 +54,10 @@ const TopBar = () => {
   return (
     <div className="topbar-container">
       <div className="topbar-logo">
-        <img src={logo} className="logo" alt="Craftify Productions Logo" />
-        <span className="logo-text">Ace Crafts</span>
+        <Link to="/">
+          <img src={logo} className="logo" alt="Craftify Productions Logo" /></Link>
+          <span className="logo-text">Ace Crafts</span>
+        
       </div>
 
       <div className="menu-toggle" onClick={toggleMenu}>
