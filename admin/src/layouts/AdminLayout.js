@@ -4,15 +4,13 @@ import Nav from "./Nav";
 
 function AdminLayout({ Content, children }) {
   return (
-    <div className="flex flex-col">
+    <div className="admin-shell">
       <Nav />
-      <div className="flex flex-1">
-        {/* Sidebar on the left */}
-        <aside className="w-64 h-full border-r bg-white sticky top-0">
+      <div className="admin-layout">
+        <aside className="admin-sidebar">
           <SideBar />
         </aside>
-        {/* Content area */}
-        <main className="flex-1 overflow-x-hidden overflow-y-auto p-4">
+        <main className="admin-main">
           {Content || children}
         </main>
       </div>

@@ -2,11 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import pop_up_btn from '../../../src/images/pop_up_btn.png';
 import yt_jobs from '../../images/yt_jobs.png';
-import discord from '../../images/discord.png';
-import twitter from '../../images/twitter.png';
-import gmail from '../../images/gmail.png';
-import ytjobs from '../../images/ytjobs.png';
-import GTAV_logo from '../../images/GTAV_logo.webp';
 import './TopBar.css';
 import logo from '../../../src/images/Ace_craft_logo_copy.png';
 import RedButtonModal from '../PopupModal/RedButtonModal';
@@ -58,18 +53,17 @@ const TopBar = () => {
 
   return (
     <div className="topbar-container">
-      {/* Logo section (left) */}
       <div className="topbar-logo">
-        <img src={logo} className="logo" alt="Craftify Productions Logo" />
-        <span className="logo-text">Ace Crafts</span>
+        <Link to="/">
+          <img src={logo} className="logo" alt="Craftify Productions Logo" /></Link>
+          <span className="logo-text">Ace Crafts</span>
+        
       </div>
 
-      {/* Menu toggle for mobile */}
       <div className="menu-toggle" onClick={toggleMenu}>
         <img src="https://cdn-icons-png.flaticon.com/512/9710/9710841.png" alt="Menu" />
       </div>
 
-      {/* Navigation menu (center) */}
       <div className={`topbar-nav ${menuOpen ? 'open' : ''}`}>
         <div className="nav-container">
           <ul className="nav-items">
@@ -93,13 +87,13 @@ const TopBar = () => {
           </ul>
           {isMobile && (
             <div className={`social-icons ${menuOpen ? 'mobile-show' : ''}`}>
-              <div className="social-icon" onClick={copyDiscordID}>
+              <div className="social-icon social-icon-discord" onClick={copyDiscordID}>
                 <FaDiscord />
               </div>
-              <div className="social-icon" onClick={openTwitter}>
+              <div className="social-icon social-icon-twitter" onClick={openTwitter}>
                 <BsTwitterX />
               </div>
-              <div className="social-icon" onClick={openMail}>
+              <div className="social-icon social-icon-mail" onClick={openMail}>
                 <IoMdMail />
               </div>
               <div className="social-icon" onClick={openYtjobs}>
@@ -110,17 +104,15 @@ const TopBar = () => {
         </div>
       </div>
 
-      {/* Game logos and social icons (right) */}
       <div className="topbar-right">
-        {/* Social icons for mobile will be part of the dropdown menu */}
         <div className={`hide-on-mobile social-icons ${menuOpen ? 'mobile-show' : ''}`}>
-          <div className="social-icon" onClick={copyDiscordID}>
+          <div className="social-icon social-icon-discord" onClick={copyDiscordID}>
             <FaDiscord />
           </div>
-          <div className="social-icon" onClick={openTwitter}>
+          <div className="social-icon social-icon-twitter" onClick={openTwitter}>
             <BsTwitterX />
           </div>
-          <div className="social-icon" onClick={openMail}>
+          <div className="social-icon social-icon-mail" onClick={openMail}>
             <IoMdMail />
           </div>
           <div className="social-icon" onClick={openYtjobs}>

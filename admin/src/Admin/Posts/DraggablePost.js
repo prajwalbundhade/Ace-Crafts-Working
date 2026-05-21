@@ -6,13 +6,12 @@ import { Link } from "react-router-dom";
 
 const DraggablePost = React.memo(
   ({ post, index, handleDelete, handleEdit }) => {
-    // Get the first image URL from mediaContent, or use a fallback image
     const thumbnailImage =
       post.mediaContent && post.mediaContent.length > 0
         ? post.mediaContent[0].imageUrl
-        : post.imagePath && post.imagePath.length > 0 // Fallback for old data format
+        : post.imagePath && post.imagePath.length > 0
         ? post.imagePath[0]
-        : "https://via.placeholder.com/150*200"; // Fallback image if no image is available
+        : "https://via.placeholder.com/150x200";
 
     return (
       <Draggable key={post._id} draggableId={post._id} index={index}>
@@ -21,31 +20,30 @@ const DraggablePost = React.memo(
             ref={provided.innerRef}
             {...provided.draggableProps}
             {...provided.dragHandleProps}
-            className="text-center border-b"
+            className="admin-table-row"
           >
-            <td className="py-2 text-center">{post.order}</td>
-            <td className="py-2">
+            <td>{post.order}</td>
+            <td>
               <img
-                className="w-20 mx-auto"
+                className="admin-post-thumb"
                 src={thumbnailImage}
                 alt={post.title}
               />
             </td>
-            <td className="py-2 truncate">{post.title}</td>
-            <td className="py-2">{post.category}</td>
-            <td className="py-2 flex justify-around">
-              <FontAwesomeIcon
-                className="text-red-500 cursor-pointer"
-                icon={faTrash}
-                onClick={() => handleDelete(post._id)}
-              />
-              <Link to={`/Admin/Post/Edit/${post._id}`}>
+            <td className="admin-post-title">{post.title}</td>
+            <td><span className="admin-category-pill">{post.category}</span></td>
+            <td>
+              <div className="admin-row-actions">
+                <button type="button" className="admin-icon-btn danger" onClick={() => handleDelete(post._id)}>
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
+                <Link to={`/Admin/Post/Edit/${post._id}`} className="admin-icon-btn edit">
                 <FontAwesomeIcon
-                  className="text-yellow-500"
                   icon={faPen}
                   onClick={() => handleEdit(post)}
                 />
               </Link>
+              </div>
             </td>
           </tr>
         )}
