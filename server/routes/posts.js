@@ -48,6 +48,38 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// Update list flags without touching the rest of the post data
+router.patch("/:id/flags", async (req, res) => {
+  try {
+    const allowedFields = ["isActive", "isNewMod"];
+    const updates = {};
+
+    allowedFields.forEach((field) => {
+      if (typeof req.body[field] === "boolean") {
+        updates[field] = req.body[field];
+      }
+    });
+
+    if (Object.keys(updates).length === 0) {
+      return res.status(400).json({ message: "No valid flags provided" });
+    }
+
+    const updatedPost = await Post.findByIdAndUpdate(
+      req.params.id,
+      { $set: updates },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedPost) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    res.status(200).json(updatedPost);
+  } catch (error) {
+    res.status(400).json({ message: "Error updating post flags", error: error.message });
+  }
+});
+
 // Get a single post by ID
 router.get("/:id", async (req, res) => {
   try {

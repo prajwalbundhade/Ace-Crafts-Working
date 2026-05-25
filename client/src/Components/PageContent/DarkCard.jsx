@@ -8,7 +8,7 @@ import book_now from "../../images/book_now.png";
 import nextIcon from "../../images/rightIcon.png";
 import prevIcon from "../../images/prevIcon.png";
 const DarkCard = ({ data }) => {
-  const { title, state, mediaContent, description, buyNow, price, bookNow, newbuynow } = data;
+  const { title, state, mediaContent, description, buyNow, price, bookNow, newbuynow, isNewMod } = data;
   const [showBookModal, setShowBookModal] = useState(false);
   const [showNewBuyNowModal, setShowNewBuyNowModal] = useState(false);
 
@@ -113,6 +113,7 @@ const DarkCard = ({ data }) => {
           </div>
         ) : null}
       </div>
+      {isNewMod && <div className="new-mod-ribbon">NEW MOD</div>}
       <div className="badge-container">{getStateBadge(state)}</div>
       <Card.Body>
         <Card.Title className="card-title">{title}</Card.Title>
@@ -258,6 +259,7 @@ DarkCard.propTypes = {
     price: PropTypes.string,
     bookNow: PropTypes.bool,
     newbuynow: PropTypes.bool,
+    isNewMod: PropTypes.bool,
   }).isRequired,
 };
 

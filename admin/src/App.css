@@ -378,6 +378,63 @@ a {
   font-weight: 800;
 }
 
+.admin-status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 104px;
+  min-height: 34px;
+  padding: 7px 13px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.admin-status-pill:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.admin-status-pill.active {
+  color: #caffd8;
+  border-color: rgba(27, 193, 79, 0.42);
+  background: rgba(20, 134, 55, 0.9);
+}
+
+.admin-status-pill.inactive {
+  color: #ffe2e7;
+  border-color: rgba(255, 92, 122, 0.5);
+  background: rgba(162, 28, 54, 0.9);
+}
+
+.admin-status-pill.new-mod.active {
+  color: #fff2b6;
+  border-color: rgba(255, 193, 7, 0.48);
+  background: rgba(156, 96, 5, 0.95);
+}
+
+.admin-status-pill.new-mod.muted {
+  color: rgba(244, 255, 247, 0.58);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.admin-status-dot {
+  width: 10px;
+  height: 10px;
+  flex: 0 0 10px;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 12px currentColor;
+}
+
 .admin-row-actions {
   display: flex;
   gap: 10px;
@@ -470,6 +527,31 @@ a {
 .admin-form option {
   background: #101510;
   color: var(--admin-text);
+}
+
+.admin-form-toggle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.admin-form-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 14px;
+  color: var(--admin-text) !important;
+  border: 1px solid var(--admin-border);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  cursor: pointer;
+}
+
+.admin-form-toggle input {
+  width: 18px;
+  min-height: 18px;
+  accent-color: var(--admin-green);
 }
 
 .admin-media-item {
@@ -575,6 +657,10 @@ a {
   }
 
   .admin-table {
-    min-width: 760px;
+    min-width: 980px;
+  }
+
+  .admin-form-toggle-grid {
+    grid-template-columns: 1fr;
   }
 }
