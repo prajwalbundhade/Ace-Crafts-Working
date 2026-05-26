@@ -50,10 +50,10 @@
   position: relative;
   color: #caffd8;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 16px;
   line-height: 24px;
   border: 1px solid rgba(27, 193, 79, 0.42);
-  padding: 1px 10px;
+  padding: 4px 10px;
 }
 
 .badge-container {
@@ -101,7 +101,7 @@
 }
 
 .buybutton {
-  width: 96px;
+  width: 84px;
   cursor: pointer;
   border-radius: 999px;
   filter: drop-shadow(0 10px 20px rgba(27, 193, 79, 0.16));
@@ -209,7 +209,7 @@
   .tag {
     font-size: 10px;
     line-height: 22px;
-    margin-right: 12px;
+    margin-right: 1px;
   }
   .card-title {
     font-size: 12px !important;
