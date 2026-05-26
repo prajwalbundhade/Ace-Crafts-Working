@@ -17,7 +17,7 @@ const PageContent = () => {
         const response = await axios.get(
           "https://teamacecrafts.com/api/posts/new-all-post"
         );
-        setCardsData(response.data);
+        setCardsData(response.data.filter((card) => card.isActive !== false));
         setLoading(false);
       } catch (error) {
         console.error("Error fetching card data:", error);

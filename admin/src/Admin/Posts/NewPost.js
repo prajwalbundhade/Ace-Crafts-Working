@@ -9,6 +9,8 @@ function AddPost() {
     index: "1",
     title: "",
     category: "",
+    isActive: true,
+    isNewMod: false,
     state: "",
     mediaContent: [],
     description: "",
@@ -26,8 +28,8 @@ function AddPost() {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === "checkbox" ? checked : value });
   };
 
   const handleMediaInputChange = (e) => {
@@ -116,6 +118,8 @@ function AddPost() {
     setFormData({
       title: "",
       category: "",
+      isActive: true,
+      isNewMod: false,
       state: "",
       mediaContent: [],
       description: "",
@@ -195,6 +199,27 @@ function AddPost() {
               </option>
             ))}
           </select>
+        </div>
+
+        <div className="admin-form-toggle-grid">
+          <label className="admin-form-toggle">
+            <input
+              type="checkbox"
+              name="isActive"
+              checked={formData.isActive}
+              onChange={handleChange}
+            />
+            <span>Status Active</span>
+          </label>
+          <label className="admin-form-toggle">
+            <input
+              type="checkbox"
+              name="isNewMod"
+              checked={formData.isNewMod}
+              onChange={handleChange}
+            />
+            <span>New Mod</span>
+          </label>
         </div>
 
         {/* Media Content Section */}

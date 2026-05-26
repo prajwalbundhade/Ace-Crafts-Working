@@ -11,6 +11,8 @@ const NewEditPost = () => {
   const [formData, setFormData] = useState({
     title: '',
     category: '',
+    isActive: true,
+    isNewMod: false,
     state: '',
     mediaContent: [],
     description: '',
@@ -47,7 +49,11 @@ const NewEditPost = () => {
           delete postData.ytLink;
         }
 
-        setFormData(postData);
+        setFormData({
+          ...postData,
+          isActive: postData.isActive !== false,
+          isNewMod: postData.isNewMod === true
+        });
       } catch (error) {
         console.error("Error fetching post data:", error);
         Swal.fire('Error', 'Failed to fetch post data', 'error');
@@ -57,8 +63,8 @@ const NewEditPost = () => {
   }, [id]);
   
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value, type, checked } = e.target;
+    setFormData({ ...formData, [name]: type === 'checkbox' ? checked : value });
   };
 
   const handleMediaInputChange = (e) => {
@@ -130,6 +136,8 @@ const NewEditPost = () => {
     setFormData({
       title: '',
       category: '',
+      isActive: true,
+      isNewMod: false,
       state: '',
       mediaContent: [],
       description: '',
@@ -199,6 +207,27 @@ const NewEditPost = () => {
               </option>
             ))}
           </select>
+        </div>
+
+        <div className="admin-form-toggle-grid">
+          <label className="admin-form-toggle">
+            <input
+              type="checkbox"
+              name="isActive"
+              checked={formData.isActive}
+              onChange={handleChange}
+            />
+            <span>Status Active</span>
+          </label>
+          <label className="admin-form-toggle">
+            <input
+              type="checkbox"
+              name="isNewMod"
+              checked={formData.isNewMod}
+              onChange={handleChange}
+            />
+            <span>New Mod</span>
+          </label>
         </div>
 
         <div className="flex flex-col">

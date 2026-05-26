@@ -15,6 +15,14 @@ const PostSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
+    isNewMod: {
+      type: Boolean,
+      default: false,
+    },
     state: {
       type: String,
       default: "",

@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import DraggablePost from './DraggablePost'; // Import the new memoized component
 
-function PostsData({ postsData, currentPage, itemsPerPage, handleDelete, handleEdit, onDragEnd }) {
+function PostsData({ postsData, currentPage, itemsPerPage, handleDelete, handleEdit, handleFlagChange, onDragEnd }) {
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const postsToDisplay = postsData.slice(startIndex, endIndex);
@@ -26,6 +26,8 @@ function PostsData({ postsData, currentPage, itemsPerPage, handleDelete, handleE
                     <th>Picture</th>
                     <th>Title</th>
                     <th>Category</th>
+                    <th>Status</th>
+                    <th>New Mod</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
@@ -37,6 +39,7 @@ function PostsData({ postsData, currentPage, itemsPerPage, handleDelete, handleE
                       index={index}
                       handleDelete={handleDelete}
                       handleEdit={handleEdit}
+                      handleFlagChange={handleFlagChange}
                     />
                   ))}
                   {provided.placeholder}
@@ -81,6 +84,35 @@ function Posts() {
     } catch (error) {
       Swal.fire('Error!', 'There was a problem deleting the post.', 'error');
       console.error('Error deleting post:', error);
+    }
+  };
+
+  const handleFlagChange = async (postId, field, value) => {
+    setPostsData((currentPosts) =>
+      currentPosts.map((post) =>
+        post._id === postId ? { ...post, [field]: value } : post
+      )
+    );
+
+    try {
+      const response = await axios.patch(
+        `https://teamacecrafts.com/api/posts/${postId}/flags`,
+        { [field]: value }
+      );
+
+      setPostsData((currentPosts) =>
+        currentPosts.map((post) =>
+          post._id === postId ? { ...post, ...response.data } : post
+        )
+      );
+    } catch (error) {
+      setPostsData((currentPosts) =>
+        currentPosts.map((post) =>
+          post._id === postId ? { ...post, [field]: !value } : post
+        )
+      );
+      Swal.fire("Error!", "There was a problem updating the status.", "error");
+      console.error("Error updating post flag:", error);
     }
   };
   
@@ -178,6 +210,7 @@ function Posts() {
             itemsPerPage={itemsPerPage}
             handleDelete={handleDelete}
           handleEdit={handleEdit}
+          handleFlagChange={handleFlagChange}
           onDragEnd={onDragEnd}
           />
           <div className="admin-pagination">
