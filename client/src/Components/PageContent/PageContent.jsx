@@ -15,7 +15,7 @@ const PageContent = () => {
     const fetchCardsData = async () => {
       try {
         const response = await axios.get(
-          "https://teamacecrafts.com/api/posts/new-all-post"
+          "http://localhost:5000/api/posts/new-all-post"
         );
         setCardsData(response.data.filter((card) => card.isActive !== false));
         setLoading(false);

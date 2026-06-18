@@ -87,7 +87,7 @@ function AddPost() {
     e.preventDefault();
     console.log("Form Data:", formData);
     axios
-      .post("https://teamacecrafts.com/api/posts/new", formData, {
+      .post("http://localhost:5000/api/posts/new", formData, {
         headers: {
           Authorization: "Bearer " + AuthToken(),
         },
@@ -170,7 +170,7 @@ function AddPost() {
             className="border rounded-lg p-2"
           >
             <option value="">Select a category</option>
-            {["High Quality Mods", "Roleplay Mods", "Trending Mods"].map(
+            {["High Quality Mods", "Roleplay Mods", "Trending Mods", "Challenge Mods", "Best Value Mods"].map(
               (category, index) => (
                 <option key={index} value={category}>
                   {category}
@@ -193,7 +193,7 @@ function AddPost() {
             className="border rounded-lg p-2"
           >
             <option value="">Select a state</option>
-            {["Mod"].map((state, index) => (
+            {["Mod","Map"].map((state, index) => (
               <option key={index} value={state}>
                 {state}
               </option>
@@ -256,17 +256,6 @@ function AddPost() {
             <h3 className="font-medium mb-3">Add New Media</h3>
             <div className="space-y-3">
               <div>
-                <label className="block text-sm mb-1">Image URL</label>
-                <input
-                  type="text"
-                  name="imageUrl"
-                  value={newMedia.imageUrl}
-                  onChange={handleMediaInputChange}
-                  className="border rounded-lg p-2 w-full"
-                  placeholder="Enter image URL"
-                />
-              </div>
-              <div>
                 <label className="block text-sm mb-1">YouTube Link (Optional)</label>
                 <input
                   type="text"
@@ -275,6 +264,17 @@ function AddPost() {
                   onChange={handleMediaInputChange}
                   className="border rounded-lg p-2 w-full"
                   placeholder="Enter YouTube link"
+                />
+              </div>
+              <div>
+                <label className="block text-sm mb-1">Image URL</label>
+                <input
+                  type="text"
+                  name="imageUrl"
+                  value={newMedia.imageUrl}
+                  onChange={handleMediaInputChange}
+                  className="border rounded-lg p-2 w-full"
+                  placeholder="Enter image URL"
                 />
               </div>
               <div className="flex items-center space-x-4">

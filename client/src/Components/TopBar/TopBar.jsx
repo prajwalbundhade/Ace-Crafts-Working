@@ -54,8 +54,8 @@ const TopBar = () => {
   return (
     <div className="topbar-container">
       <div className="topbar-logo">
-        <Link to="/">
-          <img src={logo} className="logo" alt="Craftify Productions Logo" /></Link>
+        <a href="/">
+          <img src={logo} className="logo" alt="Craftify Productions Logo" /></a>
           <span className="logo-text">Ace Crafts</span>
         
       </div>

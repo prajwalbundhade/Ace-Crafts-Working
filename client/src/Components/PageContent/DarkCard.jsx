@@ -7,10 +7,27 @@ import New_buy_now from "../../images/New_buy_now.png";
 import book_now from "../../images/book_now.png";
 import nextIcon from "../../images/rightIcon.png";
 import prevIcon from "../../images/prevIcon.png";
+
+// Extracts the YouTube video ID from various YouTube URL formats
+const getYouTubeId = (url) => {
+  if (!url) return null;
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+    /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/,
+  ];
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  return null;
+};
+
 const DarkCard = ({ data }) => {
   const { title, state, mediaContent, description, buyNow, price, bookNow, newbuynow, isNewMod } = data;
   const [showBookModal, setShowBookModal] = useState(false);
   const [showNewBuyNowModal, setShowNewBuyNowModal] = useState(false);
+  // Tracks which carousel slide index is playing video (null = none)
+  const [playingIndex, setPlayingIndex] = useState(null);
 
   const handleModalClose = () => {
     setShowBookModal(false);
@@ -21,6 +38,79 @@ const DarkCard = ({ data }) => {
   };
   const handleNewBuyNow = () => {
     setShowNewBuyNowModal(true);
+  };
+
+  const getVideoLabel = (media) => {
+    if (!media.ytLink) return null;
+    if (media.isRealVideo) return "Real Video";
+    if (media.isRefVideo) return "Ref. Video";
+    return null;
+  };
+
+  // Renders a single media item: thumbnail with play-overlay, or inline YouTube embed
+  const renderMediaItem = (media, index) => {
+    const videoId = getYouTubeId(media.ytLink);
+    const isPlaying = playingIndex === index;
+
+    if (media.ytLink && videoId) {
+      return (
+        <div className="image-container" key={index}>
+          {isPlaying ? (
+            <div className="yt-embed-wrapper">
+              <iframe
+                className="yt-embed-iframe"
+                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}
+                title={title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            <>
+              <Card.Img
+                className="CardImg"
+                variant="top"
+                src={media.imageUrl}
+                alt={`${title} image`}
+              />
+              {/* YouTube play overlay — visible on hover */}
+              <div
+                className="yt-play-overlay"
+                onClick={() => setPlayingIndex(index)}
+                title="Play video"
+              >
+                <svg
+                  className="yt-play-icon"
+                  viewBox="0 0 68 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    className="yt-play-btn-bg"
+                    d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z"
+                  />
+                  <path className="yt-play-btn-arrow" d="M45 24 27 14v20" />
+                </svg>
+              </div>
+              {getVideoLabel(media) && (
+                <div className="video-label">{getVideoLabel(media)}</div>
+              )}
+            </>
+          )}
+        </div>
+      );
+    }
+
+    // No YouTube link — plain image
+    return (
+      <div className="image-container" key={index}>
+        <Card.Img
+          className="CardImg"
+          variant="top"
+          src={media.imageUrl}
+          alt={`${title} image`}
+        />
+      </div>
+    );
   };
 
   const getStateBadge = (state) => {
@@ -38,13 +128,6 @@ const DarkCard = ({ data }) => {
     }
   };
 
-  const getVideoLabel = (media) => {
-    if (!media.ytLink) return null;
-    if (media.isRealVideo) return "Real Video";
-    if (media.isRefVideo) return "Ref. Video";
-    return null;
-  };
-
   return (
     <>
 {/* new card starts here */}
@@ -60,57 +143,16 @@ const DarkCard = ({ data }) => {
             nextIcon={
               <img src={nextIcon} alt="Next" className="custom-carousel-icon" />
             }
+            onSlide={() => setPlayingIndex(null)}
           >
             {mediaContent.map((media, index) => (
               <Carousel.Item key={index}>
-                <div className="image-container">
-                  {media.ytLink ? (
-                    <a href={media.ytLink} target="_blank" rel="noopener noreferrer">
-                      <Card.Img
-                        className="CardImg"
-                        variant="top"
-                        src={media.imageUrl}
-                        alt={`${title} image`}
-                      />
-                      {getVideoLabel(media) && (
-                        <div className="video-label">{getVideoLabel(media)}</div>
-                      )}
-                    </a>
-                  ) : (
-                    <Card.Img
-                      className="CardImg"
-                      variant="top"
-                      src={media.imageUrl}
-                      alt={`${title} image`}
-                    />
-                  )}
-                </div>
+                {renderMediaItem(media, index)}
               </Carousel.Item>
             ))}
           </Carousel>
         ) : mediaContent && mediaContent.length === 1 ? (
-          <div className="image-container">
-            {mediaContent[0].ytLink ? (
-              <a href={mediaContent[0].ytLink} target="_blank" rel="noopener noreferrer">
-                <Card.Img
-                  className="CardImg"
-                  variant="top"
-                  src={mediaContent[0].imageUrl}
-                  alt={`${title} image`}
-                />
-                {getVideoLabel(mediaContent[0]) && (
-                  <div className="video-label">{getVideoLabel(mediaContent[0])}</div>
-                )}
-              </a>
-            ) : (
-              <Card.Img
-                className="CardImg"
-                variant="top"
-                src={mediaContent[0].imageUrl}
-                alt={`${title} image`}
-              />
-            )}
-          </div>
+          renderMediaItem(mediaContent[0], 0)
         ) : null}
       </div>
       {isNewMod && <div className="new-mod-ribbon">NEW MOD</div>}

@@ -1,7 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv");
-// const cors = require("cors");
+const cors = require("cors");
 
 const authRoutes = require("./routes/authRoutes");
 const postRoutes = require("./routes/posts");
@@ -21,6 +21,16 @@ const app = express();
 //   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 //   allowedHeaders: ["Content-Type", "Authorization"]
 // }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://dashboard.teamacecrafts.com",
+    "https://teamacecrafts.com"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 app.use(express.json());
 

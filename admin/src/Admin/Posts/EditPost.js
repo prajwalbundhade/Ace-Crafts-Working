@@ -34,7 +34,7 @@ const NewEditPost = () => {
     const fetchPostData = async () => {
       console.log("Fetching post with ID:", id);  // Check if ID is correct
       try {
-        const response = await axios.get(`https://teamacecrafts.com/api/posts/${id}`);
+        const response = await axios.get(`http://localhost:5000/api/posts/${id}`);
         const postData = response.data;
 
         // Convert old format to new format if necessary
@@ -123,7 +123,7 @@ const NewEditPost = () => {
     e.preventDefault();
 
     try {
-      await axios.put(`https://teamacecrafts.com/api/posts/${id}`, formData);
+      await axios.put(`http://localhost:5000/api/posts/${id}`, formData);
       Swal.fire('Success', 'Post updated successfully', 'success');
       navigate('/Admin/Posts'); // Redirect to the list of posts after successful update
     } catch (error) {
@@ -182,7 +182,7 @@ const NewEditPost = () => {
             className="border rounded-lg p-2"
           >
             <option value="">Select a category</option>
-            {["High Quality Mods", "Roleplay Mods", "Trending Mods"].map((category, index) => (
+            {["High Quality Mods", "Roleplay Mods", "Trending Mods", "Challenge Mods", "Best Value Mods"].map((category, index) => (
               <option key={index} value={category}>
                 {category}
               </option>
@@ -201,7 +201,7 @@ const NewEditPost = () => {
             className="border rounded-lg p-2"
           >
             <option value="">Select a state</option>
-            {["Mod"].map((state, index) => (
+            {["Mod","Map"].map((state, index) => (
               <option key={index} value={state}>
                 {state}
               </option>
@@ -263,17 +263,6 @@ const NewEditPost = () => {
             <h3 className="font-medium mb-3">Add New Media</h3>
             <div className="space-y-3">
               <div>
-                <label className="block text-sm mb-1">Image URL</label>
-                <input
-                  type="text"
-                  name="imageUrl"
-                  value={newMedia.imageUrl}
-                  onChange={handleMediaInputChange}
-                  className="border rounded-lg p-2 w-full"
-                  placeholder="Enter image URL"
-                />
-              </div>
-              <div>
                 <label className="block text-sm mb-1">YouTube Link (Optional)</label>
                 <input
                   type="text"
@@ -282,6 +271,17 @@ const NewEditPost = () => {
                   onChange={handleMediaInputChange}
                   className="border rounded-lg p-2 w-full"
                   placeholder="Enter YouTube link"
+                />
+              </div>
+              <div>
+                <label className="block text-sm mb-1">Image URL</label>
+                <input
+                  type="text"
+                  name="imageUrl"
+                  value={newMedia.imageUrl}
+                  onChange={handleMediaInputChange}
+                  className="border rounded-lg p-2 w-full"
+                  placeholder="Enter image URL"
                 />
               </div>
               <div className="flex items-center space-x-4">
