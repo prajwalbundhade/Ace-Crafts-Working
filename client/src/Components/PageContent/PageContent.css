@@ -1,8 +1,8 @@
 .search {
   width: min(720px, 100%);
   position: relative;
-  margin-bottom: 20px;
-  margin-top: 44px;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 .search input {
   width: 100%;
@@ -69,6 +69,27 @@
 
 .shuffle-btn:active {
   transform: scale(0.98);
+}
+
+.search-and-buttons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: min(720px, 100%);
+  margin-bottom: 20px;
+  margin-top: 44px;
+}
+
+.search-and-buttons .search {
+  flex: 1;
+  margin: 0;
+}
+
+.side-btns {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
 }
 
 .btn-group {
@@ -140,7 +161,7 @@
 }
 
 @media screen and (max-width: 800px) {
-  .search {
+  .search-and-buttons {
     width: 100%;
   }
 

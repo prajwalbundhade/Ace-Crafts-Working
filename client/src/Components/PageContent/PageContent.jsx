@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import DarkCard from "./DarkCard";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ const PageContent = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
+  const [isShuffled, setIsShuffled] = useState(false);
+  const originalData = useRef([]);
 
   useEffect(() => {
     const fetchCardsData = async () => {
@@ -17,7 +19,9 @@ const PageContent = () => {
         const response = await axios.get(
           "http://localhost:5000/api/posts/new-all-post"
         );
-        setCardsData(response.data.filter((card) => card.isActive !== false));
+        const filtered = response.data.filter((card) => card.isActive !== false);
+        originalData.current = filtered;
+        setCardsData(filtered);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching card data:", error);
@@ -45,6 +49,12 @@ const PageContent = () => {
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
     setCardsData(shuffled);
+    setIsShuffled(true);
+  };
+
+  const resetCards = () => {
+    setCardsData([...originalData.current]);
+    setIsShuffled(false);
   };
 
   const filteredCards = cardsData.filter((card) => {
@@ -78,21 +88,30 @@ const PageContent = () => {
             alt=""
           />
         </Link>
-        <div className="col search search-and-shuffle">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search here.."
-            value={searchTerm}
-            onChange={handleSearchChange}
-          />
-
-          <button onClick={shuffleCards} className="btn shuffle-btn">
-            <img
-              src="https://cdn3d.iconscout.com/3d/premium/thumb/shuffle-3d-icon-download-in-png-blend-fbx-gltf-file-formats--game-play-dice-music-arrow-button-pack-user-interface-icons-9147825.png?f=webp"
-              alt=""
+        <div className="search-and-buttons">
+          <div className="col search">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search here.."
+              value={searchTerm}
+              onChange={handleSearchChange}
             />
-          </button>
+          </div>
+          <div className="side-btns">
+            <button onClick={shuffleCards} className="btn shuffle-btn" title="Shuffle">
+              <img
+                src="https://cdn3d.iconscout.com/3d/premium/thumb/shuffle-3d-icon-download-in-png-blend-fbx-gltf-file-formats--game-play-dice-music-arrow-button-pack-user-interface-icons-9147825.png?f=webp"
+                alt="Shuffle"
+              />
+            </button>
+            <button onClick={resetCards} className="btn shuffle-btn" title="Reset order">
+              <img
+                src="https://freesvg.org/img/refresh.png"
+                alt="Reset"
+              />
+            </button>
+          </div>
         </div>
         <div className="btn-group mobile-style" role="group">
           {categories.map((category, index) => (
